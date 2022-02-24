@@ -1,10 +1,16 @@
 package questao1;
 
-public class StudentRepository {
+public class StudentRepository implements IStudentRepository {
   private ArrayList<Student> students;
 
   public StudentRepository() {
     this.students = new ArrayList<Student>();
+  }
+
+  private void ensureListHasStudents() throws Exception {
+    if (students.isEmpty()) {
+      throw new Exception("Não há alunos cadastrados!");
+    }
   }
 
   public void add(Student student) {
@@ -15,7 +21,9 @@ public class StudentRepository {
     return this.students;
   }
 
-  public ArrayList<Student> findYoungestStudents() {
+  public ArrayList<Student> findYoungestStudents() throws Exception {
+    ensureListHasStudents();
+
     ArrayList<Student> youngest = new ArrayList<Student>();
     youngest.add(this.students.get(0));
 
@@ -35,11 +43,16 @@ public class StudentRepository {
     return youngest;
   }
 
-  public ArrayList<Student> findOldestStudents() {
+  public ArrayList<Student> findOldestStudents() throws Exception {
+    ensureListHasStudents();
+
     ArrayList<Student> oldest = new ArrayList<Student>();
     oldest.add(this.students.get(0));
 
     for (Student student : students) {
+      if (student == students.get(0))
+        continue;
+
       if (student.getAge() > oldest.get(0).getAge()) {
         oldest.clear();
         oldest.add(student);
