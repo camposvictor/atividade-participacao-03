@@ -1,7 +1,5 @@
 package questao1;
 
-import java.util.ArrayList;
-
 public class StudentRepository {
   private ArrayList<Student> students;
 
@@ -21,15 +19,17 @@ public class StudentRepository {
     ArrayList<Student> youngest = new ArrayList<Student>();
     youngest.add(this.students.get(0));
 
-    for (Student student : students.subList(1, students.size())) {
+    for (Student student : students) {
+      if (student == students.get(0))
+        continue;
+
       if (student.getAge() < youngest.get(0).getAge()) {
         youngest.clear();
         youngest.add(student);
         continue;
       }
-      if (student.getAge() == youngest.get(0).getAge()) {
+      if (student.getAge() == youngest.get(0).getAge())
         youngest.add(student);
-      }
     }
 
     return youngest;
@@ -49,7 +49,6 @@ public class StudentRepository {
         oldest.add(student);
       }
     }
-
     return oldest;
   }
 

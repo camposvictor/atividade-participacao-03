@@ -1,7 +1,5 @@
 package questao1;
 
-import java.util.ArrayList;
-
 public class App {
 
   public static void printStudent(Student student) {
@@ -23,15 +21,13 @@ public class App {
     ArrayList<Student> youngestStudents = studentRepo.findYoungestStudents();
 
     System.out.println("Aluno(s) mais velho(s):");
-    oldestStudents.forEach(student -> printStudent(student));
+    oldestStudents.forEach(App::printStudent);
 
     System.out.println("\nAluno(s) mais novo(s):");
-    youngestStudents.forEach(student -> printStudent(student));
+    youngestStudents.forEach(App::printStudent);
 
-    for (Student student : students) {
-      System.out.println(student.getAge());
+    for (Student student : students)
       ageSum += student.getAge();
-    }
 
     System.out.println("\nA média de idade é: " + ageSum / students.size());
 
