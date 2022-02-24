@@ -52,7 +52,7 @@ public class ArrayList<T extends Object>
     try {
       element = this.array[index];
     } catch (IndexOutOfBoundsException e) {
-      System.out.println("The index that you specified is not within bounds.");
+      System.out.println("O indice esta fora do intervalo");
       System.exit(-1);
     }
 
