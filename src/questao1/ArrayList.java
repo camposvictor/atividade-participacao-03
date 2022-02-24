@@ -24,6 +24,10 @@ public class ArrayList<T extends Object>
     return elementCount == array.length;
   }
 
+  public boolean isEmpty() {
+    return elementCount == 0;
+  }
+
   @SuppressWarnings("unchecked")
   private void resize() {
     T[] newArray = (T[]) new Object[array.length * 2];
