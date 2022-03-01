@@ -1,10 +1,14 @@
 package questao1;
 
+import java.util.Scanner;
+
 public class Menu {
   private IStudentRepository studentRepo;
+  Scanner scanner;
 
-  public Menu(IStudentRepository studentRepo) {
+  public Menu(IStudentRepository studentRepo, Scanner scanner) {
     this.studentRepo = studentRepo;
+    this.scanner = scanner;
   }
 
   private void printStudent(Student student) {
@@ -75,13 +79,14 @@ public class Menu {
 
   private void waitForEnter() {
     System.out.print("\nPressione ENTER para continuar...");
-    System.console().readLine();
+    this.scanner.nextLine();
   }
 
   public void run() {
     while (true) {
       showMenu();
-      int option = Integer.parseInt(System.console().readLine());
+      int option = this.scanner.nextInt();
+      this.scanner.nextLine();
 
       switch (option) {
         case 1:
